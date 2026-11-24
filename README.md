@@ -25,6 +25,19 @@ Synchronizes every critical mod artifact automatically:
 
 ---
 
+## 🎬 Video Showcase & Walkthrough
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=no7XMK9Rz4c">
+    <img src="https://img.youtube.com/vi/no7XMK9Rz4c/maxresdefault.jpg" alt="BG3ModSync Video Showcase & Setup Guide" width="720"/>
+  </a>
+</p>
+<p align="center">
+  <em>▶ Click the thumbnail above to watch the full setup &amp; synchronization walkthrough on YouTube (<a href="https://youtu.be/no7XMK9Rz4c">youtu.be/no7XMK9Rz4c</a>)</em>
+</p>
+
+---
+
 ## 📋 Connection Modes & Capabilities
 
 | Feature / Mode | **🛡️ VPN IP (Broadcast + Find Host)** | **🌐 Steam P2P (`BG3-...` / Select Host)** | **🌍 Direct IP (WAN / LAN + UPnP)** |
