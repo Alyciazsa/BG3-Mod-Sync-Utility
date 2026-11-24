@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Latest Release](https://img.shields.io/github/v/release/Alyciazsa/BG3-Mod-Sync-Utility?label=Release&color=brightgreen)](https://github.com/Alyciazsa/BG3-Mod-Sync-Utility/releases/latest)
+[![Nexus Mods](https://img.shields.io/badge/Nexus%20Mods-Mod%20%2325251-DA8E35.svg)](https://www.nexusmods.com/baldursgate3/mods/25251)
 [![.NET 10 Windows](https://img.shields.io/badge/.NET-10.0%20Windows%20Desktop-512BD4.svg)](https://dotnet.microsoft.com/)
 [![Platform Windows x64](https://img.shields.io/badge/Platform-Windows%2010%2F11%20x64-0078D4.svg)](https://www.microsoft.com/windows)
 [![Transport Modes](https://img.shields.io/badge/Transport-Nginx%20HTTP%20%7C%20Steam%20ICE%20%7C%20VPN-success.svg)](#-connection-modes--capabilities)
@@ -9,7 +10,7 @@
 
 A standalone Windows WPF (WinUI 3 Dark Fluent) desktop utility for synchronizing **Baldur's Gate 3** mod setups between Host and Client players at full line speed—without zipping archives, uploading 30+ GB packs to cloud storage, or duplicating files on disk.
 
-https://www.nexusmods.com/baldursgate3/mods/25251
+> 📦 **Nexus Mods Page:** [Baldur's Gate 3 — BG3 Mod Sync Utility (#25251)](https://www.nexusmods.com/baldursgate3/mods/25251)
 
 Synchronizes every critical mod artifact automatically:
 - **Mod Archives:** `Mods/*.pak` (including **Vortex Mod Manager symlinks**)
