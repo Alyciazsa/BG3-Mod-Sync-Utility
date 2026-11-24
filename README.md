@@ -7,6 +7,7 @@
 [![Platform Windows x64](https://img.shields.io/badge/Platform-Windows%2010%2F11%20x64-0078D4.svg)](https://www.microsoft.com/windows)
 [![Transport Modes](https://img.shields.io/badge/Transport-Nginx%20HTTP%20%7C%20Steam%20ICE%20%7C%20VPN-success.svg)](#-connection-modes--capabilities)
 [![100% Peer-to-Peer](https://img.shields.io/badge/Privacy-100%25%20Direct%20P2P-orange.svg)](SECURITY.md)
+[![Built with Google Antigravity](https://img.shields.io/badge/Built%20with-Google%20Antigravity-4285F4.svg)](https://antigravity.google)
 
 A standalone Windows WPF (WinUI 3 Dark Fluent) desktop utility for synchronizing **Baldur's Gate 3** mod setups between Host and Client players at full line speed—without zipping archives, uploading 30+ GB packs to cloud storage, or duplicating files on disk.
 
@@ -334,6 +335,7 @@ The single-file self-contained binary is output to `release\BG3ModSync.exe`.
 2. **[Nginx](https://nginx.org/)** — Bundled Portable HTTP Server (`1.30.6`) powering zero-copy disk-alias transfers.
 3. **[Facepunch.Steamworks](https://github.com/Facepunch/Facepunch.Steamworks)** — C# Steamworks wrapper enabling Steam Lobby matchmaking and `ISteamNetworkingSockets` WebRTC ICE transport.
 4. **.NET `System.IO.Hashing`** — Hardware-accelerated `XxHash3` implementation.
+5. **[Google Antigravity](https://antigravity.google)** — Built with AI-assisted development using Google Antigravity (human-directed architecture, testing, and verification).
 
 ---
 
