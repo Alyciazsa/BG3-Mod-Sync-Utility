@@ -9,6 +9,8 @@
 
 A standalone Windows WPF (WinUI 3 Dark Fluent) desktop utility for synchronizing **Baldur's Gate 3** mod setups between Host and Client players at full line speed—without zipping archives, uploading 30+ GB packs to cloud storage, or duplicating files on disk.
 
+https://www.nexusmods.com/baldursgate3/mods/25251
+
 Synchronizes every critical mod artifact automatically:
 - **Mod Archives:** `Mods/*.pak` (including **Vortex Mod Manager symlinks**)
 - **Load Order:** `PlayerProfiles/Public/modsettings.lsx`
