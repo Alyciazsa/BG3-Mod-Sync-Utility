@@ -1,0 +1,73 @@
+<Window x:Class="BG3ModSync.Views.SteamAppIdWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Steam AppID"
+        Icon="pack://application:,,,/Assets/app.ico"
+        Width="460"
+        SizeToContent="Height"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource WinUiWindowBg}"
+        Foreground="{StaticResource WinUiTextPrimary}"
+        FontFamily="Segoe UI Variable Text, Segoe UI">
+
+    <StackPanel Margin="20,18,20,18">
+        <!-- Header -->
+        <TextBlock Text="STEAM APP ID" FontSize="16" FontWeight="Bold" Foreground="{StaticResource WinUiAccentGold}" />
+        <TextBlock Text="Both Host and Client must use the same AppID."
+                   FontSize="12" Foreground="{StaticResource WinUiTextSecondary}" Margin="0,2,0,12" />
+
+        <!-- Options Card -->
+        <Border Background="{StaticResource WinUiCardBg}" BorderBrush="{StaticResource WinUiCardBorder}" BorderThickness="1" CornerRadius="8" Padding="14,12" Margin="0,0,0,14">
+            <StackPanel>
+                <RadioButton x:Name="PresetBg3Radio" GroupName="AppIdPreset"
+                             Content="1086940 — Baldur's Gate 3 (Default)"
+                             ToolTip="Default for players who own a legitimate copy of Baldur's Gate 3 on Steam."
+                             Foreground="#6CCB5F" FontSize="13" FontWeight="SemiBold"
+                             Margin="0,0,0,10" Checked="PresetRadio_Checked" />
+
+                <RadioButton x:Name="PresetSpacewarRadio" GroupName="AppIdPreset"
+                             Content="480 — Spacewar (Test / Non-Steam)"
+                             ToolTip="Experimental/test AppID. Use if a friend plays on GOG/non-Steam or a secondary Steam account that doesn't own BG3."
+                             Foreground="#FCE100" FontSize="13" FontWeight="SemiBold"
+                             Margin="0,0,0,12" Checked="PresetRadio_Checked" />
+
+                <!-- Custom ID Row with Inline Input Box -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <RadioButton x:Name="PresetCustomRadio" Grid.Column="0" GroupName="AppIdPreset"
+                                 Content="Custom ID:"
+                                 ToolTip="Enter any custom numeric Steam AppID that both Host and Client own on Steam."
+                                 Foreground="#60CDFF" FontSize="13" FontWeight="SemiBold"
+                                 VerticalAlignment="Center" Margin="0,0,12,0"
+                                 Checked="PresetRadio_Checked" />
+
+                    <TextBox x:Name="AppIdTextBox" Grid.Column="1"
+                             Style="{StaticResource WinUiTextBoxStyle}"
+                             FontSize="13.5" FontWeight="Bold"
+                             ToolTip="Numeric Steam AppID (e.g., 1086940 for Baldur's Gate 3, 480 for Spacewar, or any custom AppID)."
+                             TextChanged="AppIdTextBox_TextChanged" />
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Action Buttons -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Default"
+                    ToolTip="Reset Steam AppID to 1086940 (Baldur's Gate 3)."
+                    Style="{StaticResource WinUiButtonStyle}" Margin="0,0,8,0" Click="ResetDefaultBtn_Click" />
+            <Button Content="Cancel"
+                    ToolTip="Close without saving changes."
+                    Style="{StaticResource WinUiButtonStyle}" Margin="0,0,8,0" Click="CancelBtn_Click" />
+            <Button Content="✔ Save"
+                    ToolTip="Save the selected Steam AppID and reconnect Steam."
+                    Style="{StaticResource WinUiButtonStyle}"
+                    Background="#1F3A52" BorderBrush="#60CDFF" Foreground="#60CDFF" FontWeight="Bold"
+                    Padding="18,7" Click="SaveBtn_Click" />
+        </StackPanel>
+    </StackPanel>
+</Window>

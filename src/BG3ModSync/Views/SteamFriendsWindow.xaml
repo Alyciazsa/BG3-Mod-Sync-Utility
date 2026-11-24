@@ -1,0 +1,66 @@
+<Window x:Class="BG3ModSync.Views.SteamFriendsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Select Host (Same Game / AppID)"
+        Icon="pack://application:,,,/Assets/app.ico"
+        Width="540" Height="440"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource WinUiWindowBg}"
+        Foreground="{StaticResource WinUiTextPrimary}"
+        FontFamily="Segoe UI Variable Text, Segoe UI">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Steam Identity Card -->
+        <Border Grid.Row="0" Background="{StaticResource WinUiCardBg}" BorderBrush="{StaticResource WinUiCardBorder}" BorderThickness="1" CornerRadius="8" Padding="14,12" Margin="0,0,0,12">
+            <StackPanel>
+                <TextBlock x:Name="SteamAppHeaderText" Text="SELECT HOST — SAME GAME / APPID" FontSize="14" FontWeight="Bold" Foreground="{StaticResource WinUiAccentCyan}" />
+                <TextBlock x:Name="SteamStatusText" Text="Checking Steam..." FontSize="12.5" Foreground="{StaticResource WinUiTextSecondary}" Margin="0,4,0,0" />
+            </StackPanel>
+        </Border>
+
+        <!-- Header & Refresh -->
+        <Grid Grid.Row="1" Margin="0,0,0,8">
+            <TextBlock x:Name="FriendsCountHeaderText" Text="Friends Using Same Game / AppID" FontSize="13.5" FontWeight="SemiBold" VerticalAlignment="Center" />
+            <Button Content="↻ Refresh" ToolTip="Refresh friends running the same Game / AppID." Style="{StaticResource WinUiButtonStyle}" Padding="10,6" HorizontalAlignment="Right" Click="RefreshFriendsBtn_Click" />
+        </Grid>
+
+        <!-- Friends List -->
+        <ListBox x:Name="FriendsListBox" Grid.Row="2"
+                 Background="#1B1B1B" Foreground="{StaticResource WinUiTextPrimary}"
+                 BorderBrush="#383838" BorderThickness="1"
+                 ToolTip="Select an online friend running the same Game / AppID to use as your Host."
+                 MouseDoubleClick="FriendsListBox_MouseDoubleClick"
+                 Padding="6" Margin="0,0,0,12">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="4,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="220" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Name}" FontWeight="SemiBold" Foreground="#FFFFFF" />
+                        <TextBlock Grid.Column="1" Text="{Binding StatusText}" Foreground="#6CCB5F" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Footer -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="🎯 Select Host" ToolTip="Set the selected friend as your Host target for Client Sync." Style="{StaticResource WinUiAccentButtonStyle}" Click="UseFriendAsHostBtn_Click" />
+            <Button Grid.Column="2" Content="Close" ToolTip="Close this window." Style="{StaticResource WinUiButtonStyle}" Click="CloseBtn_Click" />
+        </Grid>
+    </Grid>
+</Window>

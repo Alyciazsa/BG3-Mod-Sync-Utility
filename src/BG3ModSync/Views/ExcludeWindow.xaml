@@ -1,0 +1,141 @@
+<Window x:Class="BG3ModSync.Views.ExcludeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Exclude Files &amp; Folders"
+        Icon="pack://application:,,,/Assets/app.ico"
+        Width="560" Height="490"
+        MinWidth="480" MinHeight="420"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource WinUiWindowBg}"
+        Foreground="{StaticResource WinUiTextPrimary}"
+        FontFamily="Segoe UI Variable Text, Segoe UI">
+
+    <Grid Margin="20,16,20,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,12">
+            <TextBlock Text="EXCLUDE FILES &amp; FOLDERS" FontSize="16" FontWeight="Bold" Foreground="{StaticResource WinUiAccentGold}" />
+            <TextBlock x:Name="CategoryHintText"
+                       Text="Files or folders matching these rules will not be sent (Host) or received/deleted (Client)."
+                       FontSize="12" Foreground="{StaticResource WinUiTextSecondary}" Margin="0,2,0,0" />
+        </StackPanel>
+
+        <!-- Category Selector Row -->
+        <Border Grid.Row="1" Background="{StaticResource WinUiCardBg}" BorderBrush="{StaticResource WinUiCardBorder}" BorderThickness="1" CornerRadius="8" Padding="12,9" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Category:" VerticalAlignment="Center" FontSize="12.5" FontWeight="SemiBold" Foreground="{StaticResource WinUiAccentCyan}" Margin="0,0,14,0" />
+
+                <RadioButton x:Name="CatPakRadio" Grid.Column="1" GroupName="ExcludeCatGroup"
+                             Content="PAK" IsChecked="True"
+                             ToolTip="Mods folder (.pak files). Supports file name (english.pak), extension (.txt), or partial name match."
+                             Foreground="{StaticResource WinUiTextPrimary}" FontSize="13" FontWeight="Bold"
+                             Margin="0,0,18,0" Checked="CategoryRadio_Checked" />
+
+                <RadioButton x:Name="CatJsonRadio" Grid.Column="2" GroupName="ExcludeCatGroup"
+                             Content="JSON"
+                             ToolTip="Script Extender folder. Supports folder name (Armory, CC_Preset, CPF), file name, or partial match."
+                             Foreground="{StaticResource WinUiTextPrimary}" FontSize="13" FontWeight="Bold"
+                             Margin="0,0,18,0" Checked="CategoryRadio_Checked" />
+
+                <RadioButton x:Name="CatGamedataRadio" Grid.Column="3" GroupName="ExcludeCatGroup"
+                             Content="GAMEDATA"
+                             ToolTip="BG3 \bin &amp; NativeMods folder. Supports file name, extension (.log, .bak), or partial match (vortex_backup)."
+                             Foreground="{StaticResource WinUiTextPrimary}" FontSize="13" FontWeight="Bold"
+                             Margin="0,0,18,0" Checked="CategoryRadio_Checked" />
+
+                <RadioButton x:Name="CatLoadOrderRadio" Grid.Column="4" GroupName="ExcludeCatGroup"
+                             Content="LOADORDER"
+                             ToolTip="Load Order (modsettings.lsx). Add 'modsettings.lsx' here if you do not want load order synced."
+                             Foreground="{StaticResource WinUiTextPrimary}" FontSize="13" FontWeight="Bold"
+                             Checked="CategoryRadio_Checked" />
+            </Grid>
+        </Border>
+
+        <!-- Add Rule Input Row -->
+        <Grid Grid.Row="2" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="RuleInputBox" Grid.Column="0"
+                     Style="{StaticResource WinUiTextBoxStyle}"
+                     ToolTip="Type a file name (e.g. english.pak), folder name (e.g. Armory), extension (e.g. .log), or partial name to exclude."
+                     KeyDown="RuleInputBox_KeyDown" />
+
+            <Button x:Name="AddRuleBtn" Grid.Column="1" Content="＋ Add"
+                    ToolTip="Add this exclude rule to the current category."
+                    Style="{StaticResource WinUiAccentButtonStyle}" Margin="8,0,0,0" Padding="16,7"
+                    Click="AddRuleBtn_Click" />
+        </Grid>
+
+        <!-- Active Rules List for Selected Category -->
+        <Border Grid.Row="3" Background="{StaticResource WinUiCardBg}" BorderBrush="{StaticResource WinUiCardBorder}" BorderThickness="1" CornerRadius="8" Padding="12,10" Margin="0,0,0,12">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="ListHeaderText" Grid.Row="0"
+                           Text="Excluded in PAK (Mods):"
+                           FontSize="12.5" FontWeight="SemiBold" Foreground="{StaticResource WinUiAccentCyan}" Margin="0,0,0,6" />
+
+                <ListBox x:Name="RulesListBox" Grid.Row="1"
+                         Background="#161616" Foreground="{StaticResource WinUiTextPrimary}"
+                         BorderBrush="#343434" BorderThickness="1"
+                         FontFamily="Cascadia Mono, Consolas, Segoe UI"
+                         FontSize="13" Padding="6"
+                         SelectionMode="Extended"
+                         ToolTip="Select one or more exclude rules and click Remove to delete them." />
+            </Grid>
+        </Border>
+
+        <!-- Footer Buttons -->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="🗑 Remove"
+                    ToolTip="Remove the selected rule(s) from this category."
+                    Style="{StaticResource WinUiButtonStyle}" Foreground="#FF7A7A" Margin="0,0,8,0"
+                    Click="RemoveRuleBtn_Click" />
+
+            <Button Grid.Column="1" Content="↻ Default"
+                    ToolTip="Reset this category's exclude list back to default (e.g. english.pak for PAK, Armory/CC_Preset/CPF for JSON)."
+                    Style="{StaticResource WinUiButtonStyle}"
+                    Click="ResetCategoryDefaultBtn_Click" />
+
+            <Button Grid.Column="3" Content="Cancel"
+                    ToolTip="Close without saving changes."
+                    Style="{StaticResource WinUiButtonStyle}" Margin="0,0,8,0"
+                    Click="CancelBtn_Click" />
+
+            <Button Grid.Column="4" Content="✔ Save"
+                    ToolTip="Save all exclusion lists."
+                    Style="{StaticResource WinUiAccentButtonStyle}" Padding="18,7"
+                    Click="SaveBtn_Click" />
+        </Grid>
+    </Grid>
+</Window>
