@@ -1,5 +1,11 @@
 # Security Policy
 
+> **Looking for the mod or downloads?**
+> - **Main Project Page:** [BG3-Mod-Sync-Utility README](https://github.com/Alyciazsa/BG3-Mod-Sync-Utility#readme)
+> - **GitHub Releases:** [Latest Releases](https://github.com/Alyciazsa/BG3-Mod-Sync-Utility/releases)
+> - **Nexus Mods:** [https://www.nexusmods.com/baldursgate3/mods/25251](https://www.nexusmods.com/baldursgate3/mods/25251)
+
+
 ## 🔒 Privacy & Direct Peer-to-Peer Guarantee
 All mod hashing, indexing, discovery, and file transfers in **BG3ModSync** execute **100% locally and directly peer-to-peer** between Host and Client machines:
 
